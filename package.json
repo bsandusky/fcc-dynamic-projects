@@ -1,14 +1,14 @@
 {
-  "name": "clementinejs-fcc",
-  "version": "1.0.1",
-  "description": "The elegant and lightweight boilerplate for full stack JavaScript.",
+  "name": "fcc-dynamic-projects",
+  "version": "1.0.0",
+  "description": "Container for all FCC dynamic website projects",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnstonbl01/clementinejs-fcc"
+    "url": "git+https://github.com/bsandusky/fcc-dynamic-projects"
   },
   "homepage": "http://www.clementinejs.com/",
-  "bugs": "https://github.com/johnstonbl01/clementinejs-fcc/issues",
+  "bugs": "https://github.com/bsandusky/fcc-dynamic-projects/issues",
   "keywords": [
     "MongoDB",
     "Mongoose",
@@ -21,7 +21,7 @@
   "scripts": {
   "start": "node server.js"
   },
-  "author": "Blake Johnston",
+  "author": "Brett Sandusky",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^1.2.0",
