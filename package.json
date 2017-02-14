@@ -1,7 +1,7 @@
 {
   "name": "fcc-dynamic-projects",
   "version": "1.0.0",
-  "description": "Container for all FCC dynamic website projects",
+  "description": "Boilerplate for all FCC dynamic website projects",
   "main": "server.js",
   "repository": {
     "type": "git",
