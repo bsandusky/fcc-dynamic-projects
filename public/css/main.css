@@ -77,8 +77,12 @@ header a ~ p {
 
 /****** Login Styling ******/
 
+.page-title {
+	margin-top: 50px;
+}
+
 .login {
-	margin: 86px auto 0 auto;
+	margin: 25px auto 0 auto;
 	text-align: center;
 }
 
@@ -97,25 +101,15 @@ header a ~ p {
 	margin-left: 10px
 }
 
-/****** Logo Div Styling ******/
-
-img {
-	margin: 0 auto;
-	display: block;
-}
-
-.clementine-text { /* Styling for the Clementine.js text */
-	padding: 0;
-	margin: -25px 0 0 0;
-	font-weight: 500;
-	font-size: 60px;
-	color: #FFA000;
+/****** Top Nav Styling ******/
+.user-menu {
+	margin-right: 20px
 }
 
 /****** Click Styling ******/
 
 .btn-container {	/* Styling for the div that contains the buttons */
-	margin: -10px auto 0 auto;
+	margin: 10px auto 0 auto;
 	text-align: center;
 }
 
