@@ -13,7 +13,7 @@ function ClickHandler () {
 				res.json(result.nbrClicks);
 			});
 	};
-
+	
 	this.addClick = function (req, res) {
 		Users
 			.findOneAndUpdate({ 'github.id': req.user.github.id }, { $inc: { 'nbrClicks.clicks': 1 } })
