@@ -1,6 +1,7 @@
 'use strict';
 
 var Users = require('../models/users.js');
+var Polls = require('../models/polls.js')
 
 function ClickHandler () {
 
@@ -11,6 +12,17 @@ function ClickHandler () {
 				if (err) { throw err; }
 
 				res.json(result.nbrClicks);
+			});
+	};
+	
+	this.getPolls = function(req, res) {
+		
+		Polls
+			.find({ 'created_by': req.user.github.id }, { '_id': false})
+			.exec(function(err, results) {
+				if (err) { throw err; }
+			
+				res.json(results);
 			});
 	};
 	

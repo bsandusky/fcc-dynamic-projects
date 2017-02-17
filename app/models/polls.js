@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var Poll = new Schema({
 	
-	created_by: String,
+	created_by: Number,
 	created_timestamp: Date,
 	active: Boolean,
 	poll_stimulus: String,

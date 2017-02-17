@@ -12,6 +12,7 @@ module.exports = function (app, passport) {
 			res.redirect('/login');
 		}
 	}
+	
 
 	var clickHandler = new ClickHandler();
 
@@ -54,4 +55,7 @@ module.exports = function (app, passport) {
 		.get(isLoggedIn, clickHandler.getClicks)
 		.post(isLoggedIn, clickHandler.addClick)
 		.delete(isLoggedIn, clickHandler.resetClicks);
+		
+	app.route('/api/:id/polls')
+		.get(isLoggedIn, clickHandler.getPolls)
 };

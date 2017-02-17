@@ -3,15 +3,18 @@
 (function () {
 
    var createNewPollButton = document.getElementById("create-new-poll-button");
-   var viewAllPollsButton = document.getElementById("view-all-polls-button");
-   // var apiUrl = appUrl + '/api/:id/clicks';
+   var viewMyPollsButton = document.getElementById("view-my-polls-button");
+   var pollsContainer = document.getElementById("polls-container")
+   var apiUrl = appUrl + '/api/:id/polls';
 
    createNewPollButton.addEventListener('click', function () {
       console.log("createNewPollButton clicked");
    });
    
-   viewAllPollsButton.addEventListener('click', function () {
-      console.log("viewAllPollsButton clicked")
-   });
+   viewMyPollsButton.addEventListener('click', function () {
+       ajaxFunctions.ajaxRequest('GET', apiUrl, function(response) {
+          pollsContainer.innerHTML = response;
+       });
+   }, false);
 
 })();
