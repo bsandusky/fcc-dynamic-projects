@@ -1,19 +1,9 @@
 'use strict';
 
 var Users = require('../models/users.js');
-var Polls = require('../models/polls.js')
+var Polls = require('../models/polls.js');
 
 function ClickHandler () {
-
-	this.getClicks = function (req, res) {
-		Users
-			.findOne({ 'github.id': req.user.github.id }, { '_id': false })
-			.exec(function (err, result) {
-				if (err) { throw err; }
-
-				res.json(result.nbrClicks);
-			});
-	};
 	
 	this.getPolls = function(req, res) {
 		
@@ -26,28 +16,29 @@ function ClickHandler () {
 			});
 	};
 	
-	this.addClick = function (req, res) {
-		Users
-			.findOneAndUpdate({ 'github.id': req.user.github.id }, { $inc: { 'nbrClicks.clicks': 1 } })
-			.exec(function (err, result) {
-					if (err) { throw err; }
+	this.addPoll = function(req, res) {
 
-					res.json(result.nbrClicks);
-				}
-			);
-	};
+		var optionsArray = req.body.poll_options.split(";");
+		var formattedOptions = [];
 
-	this.resetClicks = function (req, res) {
-		Users
-			.findOneAndUpdate({ 'github.id': req.user.github.id }, { 'nbrClicks.clicks': 0 })
-			.exec(function (err, result) {
-					if (err) { throw err; }
-
-					res.json(result.nbrClicks);
-				}
-			);
-	};
-
+		optionsArray.forEach(function(option) {
+			formattedOptions.push({"option": option.trim(), count: 0});
+		});
+		
+		var newPollObject = {};
+		
+		newPollObject['created_by'] = req.user.github.id;
+		newPollObject['created_timestamp'] = Date.now();
+		newPollObject['active'] = true;
+		newPollObject['poll_stimulus'] = req.body.poll_stimulus;
+		newPollObject['poll_options'] = formattedOptions;
+		
+		var poll = new Polls(newPollObject);
+		poll.save(function(err, poll) {
+			if (err) { throw err };
+			res.json(poll);
+		});
+	}
 }
 
 module.exports = ClickHandler;

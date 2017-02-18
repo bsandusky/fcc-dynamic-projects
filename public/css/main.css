@@ -196,3 +196,18 @@ span {
 	display: inline;
 	margin: 0;
 }
+
+/****** Modal Styling ******/
+
+.icons {
+	margin-top: 7px;
+}
+
+.fi-x {
+	margin-right: 10px;
+}
+
+.error {
+	color: red;
+	visibility: hidden;
+}

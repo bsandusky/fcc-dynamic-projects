@@ -5,6 +5,7 @@
 	<head>
 		<title>FCC Voting Application: Homepage</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation-icons/3.0/foundation-icons.min.css">
 		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
 	</head>
 
@@ -19,14 +20,46 @@
 		<div class="row text-center">
 			<h1>FCC Voting Application</h1>
 		</div>
+		
+		<div class="reveal" id="createPollModal" data-reveal>
+			<button class="close-button" data-close aria-label="Close modal" type="button">
+  				<span aria-hidden="true">&times;</span>
+			</button>
+			<h4>Create New Poll</h4>
+			<form id="create-poll-form">
+				<div class="row">
+    				<div class="medium-12 columns">
+	  					<label>Poll Question
+	  					<span class="error" id="poll-question-error">This field is required</span>
+    					<input type="text" id="poll-question-field" placeholder="Enter question here">
+    					</label>
+    				</div>
+				</div>
+				
+				<div class="row">
+    					<div class="medium-12 columns">
+							<label>Poll Options
+    						<span class="error" id="poll-options-error">This field is required</span>
+    						<textarea rows="4" id="poll-options-field" placeholder="Enter poll option separated by a semicolon (;)"></textarea>
+    						</label>
+        				</div>
+    				</div>
+    				<div class="medium-3 columns">
+    					<button class="success button" id="create-new-poll-button" value="Create poll">Create poll</button>
+    				</div>
+				</div>
+			</form>
+		</div>
 	
 		<div class="row btn-container">
-			<button type="button" class="success button" id="create-new-poll-button">Create new poll</button>
+			<button type="button" class="success button" data-open="createPollModal">Create new poll</button>
 			<button type="button" class="button" id="view-my-polls-button">View My Polls</button>
 		</div>
 		
 		<div class="row" id="polls-container"></div>
 		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js"></script>
 		<script type="text/javascript" src="common/ajax-functions.js"></script>
 		<script type="text/javascript" src="controllers/clickController.client.js"></script>
 		<script type="text/javascript" src="controllers/userController.client.js"></script>
