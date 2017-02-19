@@ -141,10 +141,6 @@ header a ~ p {
 	color: #212121;
 }
 
-#click-nbr {
-	font-weight: 400;
-}
-
 /****** Profile Styling ******/
 
 .github-profile {
@@ -210,4 +206,10 @@ span {
 .error {
 	color: red;
 	visibility: hidden;
+}
+
+/****** Polls Container Styling ******/
+
+#polls-container {
+	margin-top: 30px;
 }

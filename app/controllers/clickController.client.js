@@ -5,9 +5,8 @@
    $('#createPollModal').foundation();
    var createNewPollButton = document.getElementById("create-new-poll-button");
    var viewMyPollsButton = document.getElementById("view-my-polls-button");
-   var pollsContainer = document.getElementById("polls-container")
    var apiUrl = appUrl + '/api/:id/polls';
-
+   
    createNewPollButton.addEventListener('click', function(event) {
       
       event.preventDefault();
@@ -41,15 +40,67 @@
             console.log(response)
          });
       }
-      
    }, false);
+   
+   var generatePollsList = function(record) {
+      var html = "";
+      html += "<li id="+
+               record._id +
+               "><div class='row'>" +
+               "<div class='medium-5 columns stimulus' id='poll-stimulus'>" + 
+               record.poll_stimulus +
+               "</div><div class='medium-3 columns status' id='poll-status'>";
+                     
+      if (record.active === true) {
+         html += "<button class='button alert toggleButton'>Deactivate</button>";
+      } else if (record.active === false) {
+         html += "<button class='button toggleButton'>Activate</button>";
+      }  
+                     
+      html +=  "</div>" +
+               "</div>" +
+               "</li>";
+               
+      return html;
+   }
+   
+   var updatePollsList = function(event) {
+      
+      var payload = {
+         _id: event.path[3].id
+      }
+      
+      ajaxFunctions.payloadRequest('PUT', apiUrl, payload, function(response) {
+         response = JSON.parse(response);
+         
+         if (response.active === true) {
+            event.target.classList.add("alert");
+            event.target.innerHTML = "Deactivate";
+         } else if (response.active === false) {
+            event.target.classList.remove("alert");
+            event.target.innerHTML = "Activate";
+         }
+      });
+      
+   }
    
    viewMyPollsButton.addEventListener('click', function () {
       
-      ajaxFunctions.ajaxRequest('GET', apiUrl, function(response) {
-          pollsContainer.innerHTML = response;
-      });
+      var pollsList = document.getElementById("polls-list");
       
+      ajaxFunctions.ajaxRequest('GET', apiUrl, function(response) {
+         var parsedResponse = JSON.parse(response);
+         
+         parsedResponse.forEach(function(x) {
+           pollsList.innerHTML += generatePollsList(x);
+         });
+         
+         document.querySelectorAll(".toggleButton").forEach(function(x) {
+            x.addEventListener('click', function(event) {
+               updatePollsList(event);
+            });
+         });
+      });
    }, false);
-
+   
 })();

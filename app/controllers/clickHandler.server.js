@@ -8,7 +8,7 @@ function ClickHandler () {
 	this.getPolls = function(req, res) {
 		
 		Polls
-			.find({ 'created_by': req.user.github.id }, { '_id': false})
+			.find({ 'created_by': req.user.github.id })
 			.exec(function(err, results) {
 				if (err) { throw err; }
 			
@@ -37,6 +37,19 @@ function ClickHandler () {
 		poll.save(function(err, poll) {
 			if (err) { throw err };
 			res.json(poll);
+		});
+	}
+	
+	this.updatePoll = function (req, res) {
+		
+		Polls.findById(req.body._id, function (err, poll) {
+			if (err) { throw err; }
+			
+			poll.active = !poll.active;
+			poll.save(function (err, updatedPoll) {
+				if (err) { throw err; }		
+				res.json(updatedPoll);
+			});
 		});
 	}
 }

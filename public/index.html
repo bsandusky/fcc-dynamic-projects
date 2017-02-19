@@ -21,6 +21,17 @@
 			<h1>FCC Voting Application</h1>
 		</div>
 		
+		<div class="row btn-container">
+			<button type="button" class="success button" data-open="createPollModal">Create new poll</button>
+			<button type="button" class="button" id="view-my-polls-button">View My Polls</button>
+		</div>
+		
+		<div class="row" id="polls-container">
+			<div class="medium-6 medium-centered">
+				<ul class="no-bullet" id="polls-list"></ul>
+			</div>
+		</div>
+		
 		<div class="reveal" id="createPollModal" data-reveal>
 			<button class="close-button" data-close aria-label="Close modal" type="button">
   				<span aria-hidden="true">&times;</span>
@@ -51,18 +62,12 @@
 			</form>
 		</div>
 	
-		<div class="row btn-container">
-			<button type="button" class="success button" data-open="createPollModal">Create new poll</button>
-			<button type="button" class="button" id="view-my-polls-button">View My Polls</button>
-		</div>
-		
-		<div class="row" id="polls-container"></div>
-		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js"></script>
 		<script type="text/javascript" src="common/ajax-functions.js"></script>
 		<script type="text/javascript" src="controllers/clickController.client.js"></script>
 		<script type="text/javascript" src="controllers/userController.client.js"></script>
+		
 	</body>
 
 </html>
