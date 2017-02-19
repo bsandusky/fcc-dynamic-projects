@@ -47,9 +47,11 @@
       html += "<li id="+
                record._id +
                "><div class='row'>" +
-               "<div class='medium-5 columns stimulus' id='poll-stimulus'>" + 
+               "<div class='medium-5 columns stimulus' id='poll-stimulus'>" +
+               "<a href='/polls/" + record._id +"'>" +
                record.poll_stimulus +
-               "</div><div class='medium-3 columns status' id='poll-status'>";
+               "</a></div>" +
+               "<div class='medium-3 columns status' id='poll-status'>";
                      
       if (record.active === true) {
          html += "<button class='button alert toggleButton'>Deactivate</button>";
