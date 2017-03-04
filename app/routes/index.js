@@ -59,5 +59,5 @@ module.exports = function (app, passport) {
 		.put(isLoggedIn, clickHandler.updatePoll)
 		
 	app.route('/polls/:id')
-		.get(isLoggedIn, pollHandler.getPoll);
+		.get(pollHandler.getPoll);
 };
