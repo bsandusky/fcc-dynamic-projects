@@ -10,7 +10,6 @@ function ClickHandler () {
 			.find({ 'created_by': req.user.github.id })
 			.exec(function(err, results) {
 				if (err) { throw err; }
-			
 				res.json(results);
 			});
 	};

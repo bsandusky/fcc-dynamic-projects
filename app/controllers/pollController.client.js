@@ -1,16 +1,17 @@
 (function() {
     
-    var pollName = document.getElementById("poll-name");
-    var apiUrl = appUrl + '/api/polls/:id';
+    var apiUrl = appUrl + '/api' + location.pathname;
     
     function updateHtmlElement (data, element, userProperty) {
         element.innerHTML = data[userProperty];
-   }
+    }
     
-    ajaxFunctions.ajaxRequest('GET', apiUrl, function(data) {
-        var pollData = JSON.parse(data);
+    ajaxFunctions.ajaxRequest('GET', apiUrl, function(response) {
+        var pollData = JSON.parse(response);
         
-        pollName.innerHTML = pollData;
-    })
+        var pollContainer = document.getElementById("pollContainer");
+        updateHtmlElement(pollData, pollContainer, 'poll_stimulus');
+
+    });
     
 })()

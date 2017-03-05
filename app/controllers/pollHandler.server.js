@@ -7,7 +7,7 @@ function PollHandler () {
     this.getPoll = function(req, res) {
         
         Polls
-            .findOne({"_id": req.params.id})
+            .findOne({ '_id': req.url.split('/').slice(-1)[0] })
             .exec()
             .then(function(data) {
                 res.json(data);

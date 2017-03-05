@@ -38,6 +38,11 @@ module.exports = function (app, passport) {
 		.get(isLoggedIn, function (req, res) {
 			res.sendFile(path + '/public/profile.html');
 		});
+		
+	app.route('/polls/:id')
+		.get(function (req, res) {
+			res.sendFile(path + '/public/poll.html');
+		});
 
 	app.route('/api/:id')
 		.get(isLoggedIn, function (req, res) {
@@ -58,6 +63,7 @@ module.exports = function (app, passport) {
 		.post(isLoggedIn, clickHandler.addPoll)
 		.put(isLoggedIn, clickHandler.updatePoll)
 		
-	app.route('/polls/:id')
-		.get(pollHandler.getPoll);
+	app.route('/api/polls/:id')
+		.get(pollHandler.getPoll)
+		
 };

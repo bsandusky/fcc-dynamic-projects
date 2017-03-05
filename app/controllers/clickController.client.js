@@ -89,6 +89,7 @@
    viewMyPollsButton.addEventListener('click', function () {
       
       var pollsList = document.getElementById("polls-list");
+      pollsList.innerHTML = "";
       
       ajaxFunctions.ajaxRequest('GET', apiUrl, function(response) {
          var parsedResponse = JSON.parse(response);
